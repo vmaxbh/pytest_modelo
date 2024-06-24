@@ -36,7 +36,7 @@ jobs:
     - name: Execute Tests and Generate Reports
       run: |
         source venv/bin/activate
-        py -m pytest -v --html=report.html \
+        python -m pytest -v --html=report.html \
                 --self-contained-html \
                 --capture=sys \
                 --verbose \
