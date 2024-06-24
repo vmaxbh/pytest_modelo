@@ -1,0 +1,7 @@
+py -m pytest -v --html=report.html
+pytest -v testsChrome/0-login/test_login.py
+pytest -v tests/1-home-page/test_detaheProduto.py
+pytest -v.\tests\1-home-page\test_detalheProduto.py --html=report.html
+pytest -v.\tests\1-home-page\test_detalheProduto2.py --html=report.html
+
+pytest -v.\tests\2-checkout\test_naoPreenchimentoCheckout.py --html=report.html
