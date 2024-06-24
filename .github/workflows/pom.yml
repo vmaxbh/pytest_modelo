@@ -47,7 +47,7 @@ jobs:
       uses: actions/upload-artifact@v4 
       if: always()
       with:
-        name: TestReportsSE-Exemplo_html
+        name: TestReportsSE-ExemploChrome_html
         path: reportChrome.html
 
     - name: Execute Tests Edge
@@ -64,5 +64,5 @@ jobs:
       uses: actions/upload-artifact@v4 
       if: always()
       with:
-        name: TestReportsSE-Exemplo_html
+        name: TestReportsSE-ExemploEdge_html
         path: reportEdge.html   
