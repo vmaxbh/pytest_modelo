@@ -1,0 +1,51 @@
+name: Run Tests
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v2 
+
+    - name: Set up Python
+      uses: actions/setup-python@v2 
+      with:
+        python-version: '3.8'
+
+    - name: Create Virtual Environment
+      run: python -m venv venv
+
+    - name: Activate Virtual Environment
+      run: |
+        source venv/bin/activate
+
+    - name: Install Dependencies
+      run: |
+        pip install --upgrade pip
+        pip install pytest selenium pytest-html
+
+    - name: Set PYTHONPATH
+      run: |
+        echo "PYTHONPATH=$(pwd)" >> $GITHUB_ENV
+
+    - name: Execute Tests and Generate Reports
+      run: |
+        source venv/bin/activate
+        py -m pytest -v --html=report.html \
+                --self-contained-html \
+                --capture=sys \
+                --verbose \
+                --showlocals \
+                --durations=0 
+
+    - name: Upload HTML Report
+      uses: actions/upload-artifact@v4 
+      if: always()
+      with:
+        name: TestReportsSE-Exemplo_html
+        path: report.html
