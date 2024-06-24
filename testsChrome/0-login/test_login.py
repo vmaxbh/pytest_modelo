@@ -6,7 +6,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 
-@pytest.mark.jira("KAN-9")   
+
 def test_login():
     options = Options()
     options.add_argument("--headless")
